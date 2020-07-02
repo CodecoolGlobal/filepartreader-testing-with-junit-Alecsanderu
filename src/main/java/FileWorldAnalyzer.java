@@ -6,17 +6,17 @@ import java.util.List;
 
 public class FileWorldAnalyzer  {
 
-	FilePartReader fileReader = new FilePartReader();
+	FilePartReader fileReader;
 
-	public FileWorldAnalyzer() throws IOException {
+	public FileWorldAnalyzer( FilePartReader fileReader)  {
+		this.fileReader =  fileReader;
 	}
 
 
 	public List<String> getWordsOrderedAlphabetically () throws IOException {
-		List<String> linesFromile;
-		linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
-		Collections.sort(linesFromile);
-		return linesFromile;
+		List<String> wordsFromLine= Arrays.asList(fileReader.readLines().split("\\s+"));
+		wordsFromLine.sort(String.CASE_INSENSITIVE_ORDER);
+		return wordsFromLine;
 	}
 
 	public List<String> getWordsContainingSubstring (String subString ) throws IOException {
@@ -37,10 +37,10 @@ public class FileWorldAnalyzer  {
 		linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
 		linesFromile.forEach((String line) -> {
 			if (isPalindrome(line)) {
-				linesFromile.add(line);
+				result.add(line);
 			}
 		});
-		return linesFromile;
+		return result;
 	}
 
 	static boolean isPalindrome(String str)

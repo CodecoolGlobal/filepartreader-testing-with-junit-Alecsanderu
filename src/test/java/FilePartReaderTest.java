@@ -5,43 +5,43 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FilePartReaderTest {
-	FilePartReader  fileReader = new FilePartReader();
 
+	FilePartReader  filePartReader = new FilePartReader();
 
 	@Test
 	void setup() {
-		assertThrows(IllegalArgumentException.class, () -> fileReader.setup("src/testfile/testfile.txt", 1, 0) );
+		assertThrows(IllegalArgumentException.class, () -> filePartReader.setup("src/testfile/testfile.txt", 1, 0) );
 	}
 
 
 	@Test
-	void getFilePath() throws IOException {
-		assertEquals("filePath", fileReader.getFilePath());
+	void getFilePath() {
+		assertEquals("filePath", filePartReader.getFilePath());
 
 	}
 
 	@Test
 	void getFromLine() {
-		assertEquals(0, fileReader.getFromLine());
+		assertEquals(0, filePartReader.getFromLine());
 
 	}
 
 	@Test
 	void getToLine() {
-		assertEquals(-1, fileReader.getToLine());
+		assertEquals(-1, filePartReader.getToLine());
 	}
 
 	@Test
 	void read() throws IOException {
-		fileReader.setup("src/testfile/testfile.txt",1,1);
+		filePartReader.setup("src/testfile/testfile.txt",1,1);
 		String expectedR = "linia 1 ";
-		assertEquals(expectedR, fileReader.readLines());
+		assertEquals(expectedR, filePartReader.readLines());
 	}
 
 	@Test
 	void readLines() throws IOException {
-		fileReader.setup("src/testfile/testfile.txt",1,4);
+		filePartReader.setup("src/testfile/testfile.txt",1,4);
 		String expected = "linia 1 linia 2 linia 3 linia 4 ";
-		assertEquals(expected, fileReader.readLines());
+		assertEquals(expected, filePartReader.readLines());
 	}
 }
