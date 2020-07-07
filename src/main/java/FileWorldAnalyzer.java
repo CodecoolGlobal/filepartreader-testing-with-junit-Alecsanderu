@@ -20,9 +20,8 @@ public class FileWorldAnalyzer  {
 	}
 
 	public List<String> getWordsContainingSubstring (String subString ) throws IOException {
-		List<String> linesFromile;
+		List<String> linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
 		List <String> result = new ArrayList<>();
-		linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
 		linesFromile.forEach((String line) -> {
 			if (line.contains(subString)) {
 				result.add(line);
@@ -32,9 +31,8 @@ public class FileWorldAnalyzer  {
 	}
 
 	public List<String> getStringsWhichPalindromes () throws IOException {
-		List<String> linesFromile;
+		List<String> linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
 		List <String> result = new ArrayList<>();
-		linesFromile = Arrays.asList(fileReader.readLines().split("\\s+"));
 		linesFromile.forEach((String line) -> {
 			if (isPalindrome(line)) {
 				result.add(line);
